@@ -4,11 +4,14 @@ from selenium import webdriver
 
 @pytest.fixture
 def driver():
-    driver = webdriver.Chrome()
-    driver.implicitly_wait(10)
-    driver.maximize_window()
-    driver.get("https://icarro-v1.netlify.app/search?page=0&size=10")
+    browser = webdriver.Chrome()
+    browser.implicitly_wait(10)
+    browser.maximize_window()
 
-    yield driver
+    browser.get(
+        "https://icarro-v1.netlify.app/search?page=0&size=10"
+    )
 
-    driver.quit()
+    yield browser
+
+    browser.quit()
